@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andrés_Aguirre.
@@ -55,8 +56,8 @@ public class Dibujo extends Canvas{
                 }
                 g.drawRect(x,y,w,h);
                 g.drawRect(x,y,w-10,h);
-                g.drawString(""+p.getInfo(),x+10,y+15);
-                if(p.sig!=null){
+                g.drawString(""+p.getValor(),x+10,y+15);
+                if(p.getSig()!=null){
                     g.drawLine(x+45,y+10,x+60,y+10);
                     g.drawLine(x+58,y+8,x+60,y+10);
                     g.drawLine(x+58,y+12,x+60,y+10);
@@ -70,7 +71,7 @@ public class Dibujo extends Canvas{
         }else if(orden == INSERTADO){
             g.drawRect(x,y,10,10);
             g.drawString("CAB",x,y-5);
-            if(p==lista.cab&&p.getInfo()==lista.getPib()){
+            if(p==lista.cab&&p.getValor()==lista.getPib()){
                 g.drawLine(x+10,y+5,x+20,y-5);
                 g.drawLine(x+18,y-7,x+20,y-5);
                 g.drawLine(x+18,y-3,x+20,y-5);
@@ -87,12 +88,12 @@ public class Dibujo extends Canvas{
                     y+=(50*(contador/9));
                     x=40;
                 }
-                if(p==lista.cab&&p.getInfo()==lista.getPib()){
+                if(p==lista.cab&&p.getValor()==lista.getPib()){
                     g.setColor(Color.red);
                     g.drawRect(x,y-10,w,h);
                     g.drawRect(x,y-10,w-10,h);
-                    g.drawString(""+p.getInfo(),x+10,y+5);
-                    if(p.sig!=null){
+                    g.drawString(""+p.getValor(),x+10,y+5);
+                    if(p.getSig()!=null){
                         g.drawLine(x+45,y,x+60,y+10);
                         g.drawLine(x+58,y+8,x+60,y+10);
                         g.drawLine(x+58,y+12,x+60,y+10);
@@ -101,12 +102,12 @@ public class Dibujo extends Canvas{
                     contador++;
                     p=p.getSig();
                     g.setColor(Color.blue);
-                }else if(p.getInfo()==lista.getPib()){
+                }else if(p.getValor()==lista.getPib()){
                     g.setColor(Color.red);
                     g.drawRect(x,y-10,w,h);
                     g.drawRect(x,y-10,w-10,h);
-                    g.drawString(""+p.getInfo(),x+10,y+5);
-                    if(p.sig!=null){
+                    g.drawString(""+p.getValor(),x+10,y+5);
+                    if(p.getSig()!=null){
                         g.drawLine(x+45,y,x+60,y+10);
                         g.drawLine(x+58,y+8,x+60,y+10);
                         g.drawLine(x+58,y+12,x+60,y+10);
@@ -115,11 +116,11 @@ public class Dibujo extends Canvas{
                     contador++;
                     p=p.getSig();
                     g.setColor(Color.blue);
-                }else if(p.getSig()!=null&&p.getSig().getInfo()==lista.getPib()){
+                }else if(p.getSig()!=null&&p.getSig().getValor()==lista.getPib()){
                     g.drawRect(x,y,w,h);
                     g.drawRect(x,y,w-10,h);
-                    g.drawString(""+p.getInfo(),x+10,y+15);
-                    if(p.sig!=null){
+                    g.drawString(""+p.getValor(),x+10,y+15);
+                    if(p.getSig()!=null){
                         g.drawLine(x+45,y+10,x+60,y);
                         g.drawLine(x+58,y+2,x+60,y);
                         g.drawLine(x+58,y-2,x+60,y);
@@ -130,8 +131,8 @@ public class Dibujo extends Canvas{
                 }else{
                     g.drawRect(x,y,w,h);
                     g.drawRect(x,y,w-10,h);
-                    g.drawString(""+p.getInfo(),x+10,y+15);
-                    if(p.sig!=null){
+                    g.drawString(""+p.getValor(),x+10,y+15);
+                    if(p.getSig()!=null){
                         g.drawLine(x+45,y+10,x+60,y+10);
                         g.drawLine(x+58,y+8,x+60,y+10);
                         g.drawLine(x+58,y+12,x+60,y+10);
@@ -147,7 +148,7 @@ public class Dibujo extends Canvas{
     void listarInversa(Graphics g,Nodo cab){
         Nodo p = cab;
         if(p != null){
-            listarInversa(g,p.sig);
+            listarInversa(g,p.getSig());
             g.setColor(Color.blue);
                 if(contador%9==0){
                     y+=(30*(contador/9));
@@ -155,7 +156,7 @@ public class Dibujo extends Canvas{
                 }
                 g.drawRect(x,y,w,h);
                 g.drawRect(x,y,w-10,h);
-                g.drawString(""+p.getInfo(),x+10,y+15);
+                g.drawString(""+p.getValor(),x+10,y+15);
                 if(p == lista.cab){
                     g.setColor(Color.red);
                     g.drawRect(x+20,y+h+10,10,10);

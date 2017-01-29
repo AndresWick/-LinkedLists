@@ -1,3 +1,0 @@
-# Listas enlazadas
-
-Autor @AndresWick

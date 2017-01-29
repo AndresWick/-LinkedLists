@@ -29,21 +29,21 @@ public class Lista {
         if(cab == null){
            cab = new Nodo(n);
         }else{ 
-            if(n< p.info){
+            if(n< p.getValor()){
                 Nodo nuevo = new Nodo(n);
-                nuevo.sig = cab;
+                nuevo.setSig(cab);
                 cab = nuevo;
             }else{
                 while(p != null && aux==0){
-                    if(n>p.info){
+                    if(n>p.getValor()){
                         q = p;
-                        p = p.sig; 
+                        p = p.getSig(); 
                     }else{
-                        if(n == p.info){
+                        if(n == p.getValor()){
                             JOptionPane.showMessageDialog(null,"El número ya se encuentra en la lista.");   
                             aux=2; 
                         }else{
-                            if(n<p.info){
+                            if(n<p.getValor()){
                                 aux=1;
                             }
                         }
@@ -52,8 +52,8 @@ public class Lista {
                 if(aux==2){
                 }else{
                     Nodo nuevo = new Nodo(n);
-                    nuevo.sig = p;
-                    q.sig= nuevo;
+                    nuevo.setSig(p);
+                    q.setSig(nuevo);
                 }
             }
         }
@@ -67,8 +67,8 @@ public class Lista {
         Nodo p = cab;
         String i = "";
         while(p != null){
-            i=i+" , "+p.info;
-            p = p.sig;
+            i=i+" , "+p.getValor();
+            p = p.getSig();
         }
         JOptionPane.showMessageDialog(null,"Lista: "+i);
     }
@@ -78,8 +78,8 @@ public class Lista {
         ArrayList listado = new ArrayList();
         int j = 0;
         for(;p != null;){
-            listado.add(p.info);
-            p = p.sig;
+            listado.add(p.getValor());
+            p = p.getSig();
         }
         return listado;
     }
@@ -88,12 +88,12 @@ public class Lista {
    
     public void eliminar(int referencia){
         if (buscar(referencia)) {
-            if (cab.getInfo() == referencia) {
+            if (cab.getValor() == referencia) {
                 cab = cab.getSig();
                 JOptionPane.showMessageDialog(null,referencia+" se ha eliminado de la lista.");
             } else{
                 Nodo aux = cab;
-                while(aux.getSig().getInfo() != referencia){
+                while(aux.getSig().getValor() != referencia){
                     aux = aux.getSig();
                 }
                 Nodo siguiente = aux.getSig().getSig();
@@ -109,7 +109,7 @@ public class Lista {
         Nodo aux = cab;
         boolean encontrado = false;
         while(aux != null && encontrado != true){
-            if (referencia == aux.getInfo()){
+            if (referencia == aux.getValor()){
                 encontrado = true;
             }
             else{
@@ -123,8 +123,8 @@ public class Lista {
     void ListarInversa(Nodo cab){
         Nodo p = cab;
         if(p != null){
-            ListarInversa(p.sig);
-            System.out.println(p.info);
+            ListarInversa(p.getSig());
+            System.out.println(p.getValor());
         }
     }
     
