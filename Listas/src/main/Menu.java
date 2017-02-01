@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package main;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -40,12 +39,26 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
+        contenedor.setLayout(contenedorLayout);
+        contenedorLayout.setHorizontalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+        contenedorLayout.setVerticalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 112, 650, 280));
+
         btnInsertar.setText("Insertar");
         btnInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsertarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +66,7 @@ public class Menu extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +74,7 @@ public class Menu extends javax.swing.JFrame {
                 btnListarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         btnListarAlReves.setText("Listar al reves");
         btnListarAlReves.addActionListener(new java.awt.event.ActionListener() {
@@ -67,61 +82,35 @@ public class Menu extends javax.swing.JFrame {
                 btnListarAlRevesActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
-        contenedor.setLayout(contenedorLayout);
-        contenedorLayout.setHorizontalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contenedorLayout.createSequentialGroup()
-                        .addComponent(btnListar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnListarAlReves))
-                    .addGroup(contenedorLayout.createSequentialGroup()
-                        .addComponent(btnInsertar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminar)))
-                .addContainerGap(172, Short.MAX_VALUE))
-        );
-        contenedorLayout.setVerticalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInsertar)
-                    .addComponent(btnEliminar))
-                .addGap(32, 32, 32)
-                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListar)
-                    .addComponent(btnListarAlReves))
-                .addContainerGap(171, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 22, 360, 260));
+        getContentPane().add(btnListarAlReves, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         lista.Insertar(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número.")));   
-        Ventana ven = new Ventana(lista,2);
+        Dibujo a = new Dibujo(lista,Dibujo.INSERTADO);
+        a.setBounds(0, 15, 600, 250);
+        contenedor.removeAll();
+        contenedor.add(a);
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       // JOptionPane.showMessageDialog(null,"Eliminar");
         lista.eliminar(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número que desea eliminar.")));   
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        //JOptionPane.showMessageDialog(null,"Listar");
-        Ventana ven = new Ventana(lista,0);
+        Dibujo a =(new Dibujo(lista,Dibujo.CRECIENTE));
+        a.setBounds(0, 15, 600, 250);
+        contenedor.removeAll();
+        contenedor.add(a);
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnListarAlRevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAlRevesActionPerformed
-       // JOptionPane.showMessageDialog(null,"Listar al reves");
-         Ventana ven = new Ventana(lista,1);
+        Dibujo a =(new Dibujo(lista,Dibujo.DECRECIENTE));
+        a.setBounds(0, 15, 600, 250);
+        contenedor.removeAll();
+        contenedor.add(a);   
     }//GEN-LAST:event_btnListarAlRevesActionPerformed
 
     /**
