@@ -4,6 +4,15 @@
  * and open the template in the editor.
  */
 package main;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +21,18 @@ import javax.swing.JOptionPane;
  */
 public class Menu extends javax.swing.JFrame {
     private Lista lista;
+    private Dibujo dibujo;
+    private int estado;
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         lista = new Lista();
+        dibujo = Dibujo.getInstance(lista,-1);
+        dibujo.setBounds(0, 105, 600, 250);
+        estado = -1;
+        this.add(dibujo);
         initComponents();
     }
 
@@ -30,27 +45,15 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenedor = new javax.swing.JPanel();
         btnInsertar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         btnListarAlReves = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
-        contenedor.setLayout(contenedorLayout);
-        contenedorLayout.setHorizontalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        contenedorLayout.setVerticalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 112, 650, 280));
 
         btnInsertar.setText("Insertar");
         btnInsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,28 +92,27 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         lista.Insertar(Integer.parseInt(JOptionPane.showInputDialog("Inserte el número.")));   
-        Dibujo a = new Dibujo(lista,Dibujo.INSERTADO);
-        a.setBounds(0, 15, 600, 250);
-        contenedor.removeAll();
-        contenedor.add(a);
+        dibujo.getInstance(lista,Dibujo.INSERTADO);
+        estado = Dibujo.INSERTADO;
+        dibujo.repaint();
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         lista.eliminar(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número que desea eliminar.")));   
+        dibujo.getInstance(lista,estado);
+        dibujo.repaint();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        Dibujo a =(new Dibujo(lista,Dibujo.CRECIENTE));
-        a.setBounds(0, 15, 600, 250);
-        contenedor.removeAll();
-        contenedor.add(a);
+        dibujo.getInstance(lista,Dibujo.CRECIENTE);
+        estado = Dibujo.CRECIENTE;
+        dibujo.repaint();
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnListarAlRevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarAlRevesActionPerformed
-        Dibujo a =(new Dibujo(lista,Dibujo.DECRECIENTE));
-        a.setBounds(0, 15, 600, 250);
-        contenedor.removeAll();
-        contenedor.add(a);   
+        dibujo.getInstance(lista,Dibujo.DECRECIENTE); 
+        estado = Dibujo.DECRECIENTE;
+        dibujo.repaint();
     }//GEN-LAST:event_btnListarAlRevesActionPerformed
 
     /**
@@ -152,6 +154,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnInsertar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnListarAlReves;
-    private javax.swing.JPanel contenedor;
     // End of variables declaration//GEN-END:variables
 }

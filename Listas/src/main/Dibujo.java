@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  * @author Andrés_Aguirre.
  */
 public class Dibujo extends Canvas{
+    private static Dibujo dibujo = null;
     private int contador;
     private int x;
     private int y;
@@ -21,9 +22,7 @@ public class Dibujo extends Canvas{
     public static final int DECRECIENTE = 1;
     public static final int INSERTADO = 2;
     
-    public Dibujo(Lista lista, int orden){
-        this.lista = lista;
-        this.orden = orden;
+    private Dibujo(){
         this.x = 20;
         this.y = 30;
         this.w = 50;
@@ -31,6 +30,12 @@ public class Dibujo extends Canvas{
         this.contador = 0;
     }
     
+    public void setLista(Lista lista){
+        this.lista = lista;
+    }
+ 
+    
+    @Override
     public void paint(Graphics g){
         contador = 0;
         setSize(600,250);
@@ -173,6 +178,23 @@ public class Dibujo extends Canvas{
                 }
                 x+=(w+10);
                 contador++;
+        }
+    }
+    
+    public void setOrden(int orden){
+        this.orden = orden;
+    }
+    
+    public static Dibujo getInstance(Lista lista, int orden){
+        if(dibujo != null){
+            dibujo.setOrden(orden);
+            dibujo.setOrden(orden);
+            return dibujo;
+        }else{
+            dibujo = new Dibujo();
+            dibujo.setLista(lista);
+            dibujo.setOrden(orden);
+            return dibujo;
         }
     }
     

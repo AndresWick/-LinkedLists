@@ -1,0 +1,38 @@
+[33mcommit b652fa14d5e3266ef89aad9a3c60f19d89c3c0cd[m
+Author: Carlos Andrés Aguirre Cañas <Carlos Andrés Aguirre Cañas>
+Date:   Tue Jan 31 22:54:30 2017 -0500
+
+    Se elimina la clase Ventana por ser relevante y se modifica la clase Menu.
+
+[33mcommit e542f16384f0e66ed1754dce3f25f41ee6c04ae0[m
+Merge: b5c532a 75bc359
+Author: Carlos Andrés Aguirre Cañas <Carlos Andrés Aguirre Cañas>
+Date:   Sun Jan 29 17:37:56 2017 -0500
+
+    Merge branch 'master' of https://github.com/AndresWick/LinkedLists
+
+[33mcommit b5c532a55dc80d501734c0a6859a75ae19c7507e[m
+Author: Carlos Andrés Aguirre Cañas <Carlos Andrés Aguirre Cañas>
+Date:   Sun Jan 29 17:28:59 2017 -0500
+
+    Se modifica la clase Nodo,Dibujo y Lista.
+
+[33mcommit 75bc3596783568c6b4782e5a53f4097862e22bac[m
+Author: Andrés <demonykira@gmail.com>
+Date:   Sun Jan 29 17:25:16 2017 -0500
+
+    Se crea README.md
+    
+    Se crea y agrega los datos del autor.
+
+[33mcommit ef8f16a24ff0d9a58426238fd28a212d5cd2047c[m
+Author: Carlos Andrés Aguirre Cañas <Carlos Andrés Aguirre Cañas>
+Date:   Sun Jan 29 17:22:22 2017 -0500
+
+    Se modifica la clase Nodo.
+
+[33mcommit b89c5e19824f55f8c21aab25c4f4b2554f984fa2[m
+Author: Carlos Andrés Aguirre Cañas <Carlos Andrés Aguirre Cañas>
+Date:   Sun Jan 29 16:42:16 2017 -0500
+
+    Se realizan las clases Lista, Dibujo, Nodo, Ventana y la interfaz Menu.
